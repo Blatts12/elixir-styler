@@ -53,7 +53,7 @@ When the piped argument is being passed as the first argument to the inner funct
 ```elixir
 a |> then(&f(&1, ...)) |> b()
 # Styled:
-a |> f(...)) |> b()
+a |> f(...) |> b()
 ```
 
 - add parens to function calls `|> fun |>` => `|> fun() |>`
@@ -98,6 +98,13 @@ a |> Map.new(mapper) |> ...
 a |> Enum.map(mapper) |> Enum.into(%{}) |> ...
 # Styled:
 a |> Map.new(mapper) |> ...
+
+# Given:
+a |> b() |> Stream.each(fun) |> Stream.run()
+a |> b() |> Stream.map(fun) |> Stream.run()
+# Styled:
+a |> b() |> Enum.each(fun)
+a |> b() |> Enum.each(fun)
 ```
 
 ### Unpiping Single Pipes

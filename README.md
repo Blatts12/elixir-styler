@@ -21,7 +21,7 @@ You can learn more about the history, purpose and implementation of Styler from 
 - replaces strings with sigils when the string has many escaped quotes
 - ... and so much more
 
-[See our Rewrites documentation on hexdocs for all the nitty-gritty on what all Styler does](https://hexdocs.pm/styler/)
+[See our Rewrites documentation on hexdocs](https://hexdocs.pm/styler/styles.html)
 
 ## Who is Styler for?
 
@@ -41,7 +41,7 @@ Add `:styler` as a dependency to your project's `mix.exs`:
 ```elixir
 def deps do
   [
-    {:styler, "~> 1.0.0-rc.1", only: [:dev, :test], runtime: false},
+    {:styler, "~> 1.1", only: [:dev, :test], runtime: false},
   ]
 end
 ```
@@ -79,9 +79,12 @@ Styler [will not add configuration](https://github.com/adobe/elixir-styler/pull/
 
 Ultimately Styler is @adobe's internal tool that we're happy to share with the world. We're delighted if you like it as is, and just as excited if it's a starting point for you to make something even better for yourself.
 
-## !Styler can change the behaviour of your program!
+## WARNING: Styler can change the behaviour of your program!
 
-The best example of the way in which Styler changes the meaning of your code is the following rewrite:
+In some cases, this can introduce bugs. It goes without saying, but look over your changes before committing to main :)
+
+A simple example of a way Styler changes the behaviour of code is the following rewrite:
+
 ```elixir
 # Before: this case statement...
 case foo do
@@ -110,6 +113,12 @@ end
 ```
 
 Also good style! But Styler assumes that most of the time people just meant the `if` equivalent of the code, and so makes that change. If issues like this bother you, Styler probably isn't the tool you're looking for.
+
+Other ways Styler can change your program:
+
+- [`with` statement rewrites](https://github.com/adobe/elixir-styler/issues/186)
+- [config file sorting](https://hexdocs.pm/styler/mix_configs.html#this-can-break-your-program)
+- and likely other ways. stay safe out there!
 
 ## Thanks & Inspiration
 
